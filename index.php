@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-
+    <?php include("funcoes.php") ?>
 <form class="form-control" method="POST">
 
     <div class="mb-3">
@@ -25,7 +25,7 @@
 
 <form >
     <br><br>
-    <button type="button" class="btn btn-primary">Calcular
+    <button type="submit" class="btn btn-primary">Calcular
         <?php
             //Coletando os numeros dos campos
             $num1 = $_POST["primeiroNumero"];
@@ -38,19 +38,22 @@
 
     <div class="mb-3">
       <label for="exampleFormControlTextarea1" class="form-label">Resultado</label>
-      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" readonly>
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" readonly>
+
       <?php 
-    echo somar($num1,$num2)."<br>". 
-    echo subtrair($num1,$num2)."<br>".
-    echo dividir($num1,$num2)."<br>".
-    echo multiplicar($num1,$num2); 
+      if (isset($_POST["primeiroNumero"])) {
+          echo somar($num1,$num2).
+          echo subtrair($num1,$num2).
+          echo dividir($num1,$num2).
+          echo multiplicar($num1,$num2); 
+        }else{
+            echo "Preencha os campos!";
+        }
        ?>
 
 
       </textarea>
     </div>
-
-
-
+    <button class="btn btn-primary"><a style="color: #000; text-decoration: none;" href="menu.php"> Voltar</a></button>
 </body>
 </html>
